@@ -40,4 +40,4 @@ const bookingSchema = new mongoose.Schema({
     totalPrice: Number,
 });
 
-module.exports = mongoose.model("Booking", bookingSchema);
+module.exports = mongoose.model("booking", bookingSchema);
