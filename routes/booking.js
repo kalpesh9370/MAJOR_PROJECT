@@ -46,7 +46,6 @@ const express = require("express");
 const router = express.Router();
 const Listing = require("../models/listing");
 const Booking = require("../models/booking"); // Ensure this model is correctly defined
-const Booking = require("../models/booking.js"); // Ensure this model is correctly defined
 const { isLoggedIn } = require("../middleware");
 
 // Route to show booking form
