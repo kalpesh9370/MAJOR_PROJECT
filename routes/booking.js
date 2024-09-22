@@ -45,7 +45,8 @@
 const express = require("express");
 const router = express.Router();
 const Listing = require("../models/listing");
-const booking = require("../models/Booking"); // If your file is named 'Booking.js'
+const Booking = require("../models/booking"); // Ensure this path is correct and the model exists
+// const booking = require("../models/Booking"); // If your file is named 'Booking.js'
 const { isLoggedIn } = require("../middleware");
 
 // Route to show booking form
