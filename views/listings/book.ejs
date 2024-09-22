@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h1 class="text-center mb-4">Booking for <%= listing.title %></h1>
+        <p class="text-center lead">Price: <strong>&#8377;<%= listing.price %></strong></p>
+
+        <form action="/listings/<%= listing._id %>/book" method="POST" class="needs-validation" novalidate>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="checkIn">Check-In Date</label>
+                    <input type="date" id="checkIn" name="checkIn" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please select a check-in date.
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="checkOut">Check-Out Date</label>
+                    <input type="date" id="checkOut" name="checkOut" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please select a check-out date.
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-block mt-3">Confirm Booking</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Example of Bootstrap validation
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+</script>

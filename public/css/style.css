@@ -107,3 +107,16 @@ body{
     border:1px solid #222222;
     border-radius: 10px;
 }
+
+/* Normal CSS */
+.custom-class {
+    border-width: 2px;
+    border-color: #4B5563; /* gray-600 in Tailwind corresponds to #4B5563 */
+    border-style: solid;
+    border-radius: 0.5rem; /* lg in Tailwind corresponds to 0.5rem */
+    transition: all 300ms ease-in-out;
+}
+
+.custom-class:hover {
+    transform: scale(1.1);
+}

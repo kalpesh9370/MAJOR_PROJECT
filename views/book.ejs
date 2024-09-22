@@ -1,0 +1,22 @@
+<%- include("partials/header") %>
+
+<div class="container mt-5">
+    <h1>Booking for <%= listing.title %></h1>
+    <p>Price: &#8377;<%= listing.price %></p>
+
+    <form action="/listings/<%= listing._id %>/book" method="POST">
+        <div class="form-group">
+            <label for="checkIn">Check-In Date</label>
+            <input type="date" id="checkIn" name="checkIn" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="checkOut">Check-Out Date</label>
+            <input type="date" id="checkOut" name="checkOut" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Confirm Booking</button>
+    </form>
+</div>
+
+<%- include("partials/footer") %>

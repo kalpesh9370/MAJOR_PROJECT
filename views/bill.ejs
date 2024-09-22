@@ -1,0 +1,20 @@
+<%- include("partials/header") %>
+
+<div class="container mt-5">
+    <h1>Booking Bill for <%= listing.title %></h1>
+    <p>Thank you for your booking, <%= booking.user.username %>!</p>
+
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Check-In Date:</strong> <%= booking.checkInDate.toDateString() %></li>
+        <li class="list-group-item"><strong>Check-Out Date:</strong> <%= booking.checkOutDate.toDateString() %></li>
+        <li class="list-group-item"><strong>Number of Nights:</strong> 
+            <%= Math.round((booking.checkOutDate - booking.checkInDate) / (1000 * 60 * 60 * 24)) %>
+        </li>
+        <li class="list-group-item"><strong>Total Price:</strong> &#8377;<%= booking.totalPrice %></li>
+    </ul>
+
+    <a href="/listings" class="btn btn-primary mt-3">Go Back to Listings</a>
+    <a href="/listings/<%= listing._id %>/bookings/<%= booking._id %>/bill/download" class="btn btn-success mt-3">Download Bill</a>
+</div>
+
+<%- include("partials/footer") %>

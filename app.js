@@ -1,8 +1,6 @@
 if(process.env.NODE_ENV != "production"){
   require('dotenv').config();
 }
-console.log(process.env.SECRET);
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -25,17 +23,12 @@ const passport = require('passport');
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const { saveRedirectUrl, isLoggedIn } = require('./middleware');
-
-
-
+////////////////new
+const bookingRouter = require("./routes/booking.js");
 
 
 // const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 // const dbUrl = process.env.ATLASDB_URL;
-
-
-
-
 const uri = process.env.ATLASDB_URL;
 
 
@@ -52,6 +45,10 @@ async function main() {
   await mongoose.connect(uri);
 }
 
+
+// app.get("/",(req,res)=>{
+//   res.render("./listngs.ejs")
+// })
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
@@ -112,21 +109,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get("/demouser", async(req,res)=>{
-//   let fakeUser = new User({
-//     email: "student@gmail.com",
-//     username: "Kalpesh"
-//   });
-  
-//   let registeredUser = await User.register(fakeUser, "Pass123");
-//   res.send(registeredUser);
-// })
-
-
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
 app.use(saveRedirectUrl);
+///////////////////////new
+
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
+app.use("/", bookingRouter); // Add booking router here
+
 
 
 
